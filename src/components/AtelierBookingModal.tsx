@@ -23,43 +23,43 @@ export const AtelierBookingModal: React.FC<AtelierBookingModalProps> = ({ onClos
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-[#0e0e12] border border-white/10 shadow-2xl text-white my-8 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
+      <div className="relative w-full max-w-3xl bg-[#0e0e12] border border-white/10 shadow-2xl text-white my-2 sm:my-8 max-h-[96dvh] sm:max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="p-6 border-b border-white/10 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <MapPin className="w-4 h-4 text-zinc-300" />
+        <div className="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <MapPin className="w-4 h-4 text-zinc-300 shrink-0" />
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 block">
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-zinc-400 block">
                 FLAGSHIP RESERVATIONS
               </span>
-              <h2 className="font-serif text-2xl text-white">
+              <h2 className="font-serif text-lg sm:text-2xl text-white">
                 Private Atelier Consultation
               </h2>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full border border-white/10 hover:border-white flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
+            className="w-8 h-8 rounded-full border border-white/10 hover:border-white flex items-center justify-center text-zinc-400 hover:text-white transition-colors shrink-0"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {!isBooked ? (
-          <form onSubmit={handleBooking} className="p-6 sm:p-8 space-y-6">
+          <form onSubmit={handleBooking} className="p-4 sm:p-8 space-y-5 sm:space-y-6 flex-1 overflow-y-auto">
             {/* City Selector Tabs */}
             <div>
-              <label className="block font-mono text-xs uppercase tracking-widest text-zinc-400 mb-2">
+              <label className="block font-mono text-[10px] sm:text-xs uppercase tracking-widest text-zinc-400 mb-2">
                 1. Select Flagship Atelier
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
                 {ATELIER_LOCATIONS.map((loc) => (
                   <button
                     key={loc.city}
                     type="button"
                     onClick={() => setSelectedCity(loc.city)}
-                    className={`py-2 px-3 border text-center font-mono text-xs uppercase transition-all ${
+                    className={`py-2 px-2.5 sm:px-3 border text-center font-mono text-[11px] sm:text-xs uppercase transition-all ${
                       selectedCity === loc.city
                         ? 'border-white bg-white text-black font-semibold'
                         : 'border-white/10 hover:border-white/30 bg-white/5 text-zinc-400'
@@ -71,7 +71,7 @@ export const AtelierBookingModal: React.FC<AtelierBookingModalProps> = ({ onClos
               </div>
 
               {/* Atelier Details Card */}
-              <div className="mt-3 p-4 bg-white/5 border border-white/10 font-mono text-xs text-zinc-400 space-y-1">
+              <div className="mt-3 p-3.5 sm:p-4 bg-white/5 border border-white/10 font-mono text-[11px] sm:text-xs text-zinc-400 space-y-1">
                 <div className="text-white font-medium">{activeAtelier.district}</div>
                 <div>{activeAtelier.address}</div>
                 <div className="text-zinc-500">{activeAtelier.hours} · Host: {activeAtelier.leadOptometrist}</div>
@@ -80,7 +80,7 @@ export const AtelierBookingModal: React.FC<AtelierBookingModalProps> = ({ onClos
 
             {/* Service Type */}
             <div>
-              <label className="block font-mono text-xs uppercase tracking-widest text-zinc-400 mb-2">
+              <label className="block font-mono text-[10px] sm:text-xs uppercase tracking-widest text-zinc-400 mb-2">
                 2. Consultation Experience
               </label>
               <div className="space-y-2">
@@ -125,7 +125,7 @@ export const AtelierBookingModal: React.FC<AtelierBookingModalProps> = ({ onClos
             </div>
 
             {/* Date & Time */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <div>
                 <label className="block font-mono text-[10px] uppercase text-zinc-400 mb-1">
                   Preferred Date
@@ -156,14 +156,14 @@ export const AtelierBookingModal: React.FC<AtelierBookingModalProps> = ({ onClos
             </div>
 
             {/* Guest contact */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               <input
                 type="text"
                 required
                 placeholder="Your Full Name"
                 value={guestName}
                 onChange={(e) => setGuestName(e.target.value)}
-                className="bg-white/5 border border-white/15 p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                className="bg-white/5 border border-white/15 p-2.5 sm:p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
               />
               <input
                 type="email"
@@ -171,18 +171,18 @@ export const AtelierBookingModal: React.FC<AtelierBookingModalProps> = ({ onClos
                 placeholder="Email Address"
                 value={guestEmail}
                 onChange={(e) => setGuestEmail(e.target.value)}
-                className="bg-white/5 border border-white/15 p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                className="bg-white/5 border border-white/15 p-2.5 sm:p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
               />
             </div>
 
             {/* Submit */}
-            <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-              <span className="font-mono text-[11px] text-zinc-500">
+            <div className="pt-4 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+              <span className="font-mono text-[10px] sm:text-[11px] text-zinc-500 text-center sm:text-left">
                 COMPLIMENTARY PRIVATE CONSULTATION
               </span>
               <button
                 type="submit"
-                className="bg-white text-black px-8 py-3.5 font-mono text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95 shadow-xl"
+                className="w-full sm:w-auto bg-white text-black px-8 py-3.5 font-mono text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95 shadow-xl"
               >
                 Confirm Appointment
               </button>

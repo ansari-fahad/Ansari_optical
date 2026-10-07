@@ -45,20 +45,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           : 'bg-transparent py-6 border-b border-white/5'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 sm:px-12 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 md:px-12 flex items-center justify-between">
         {/* Left: Brand Monogram & Name */}
         <a
           href="#"
-          className="group flex items-center gap-3 text-white focus:outline-none"
+          className="group flex items-center gap-2.5 sm:gap-3 text-white focus:outline-none shrink-0"
         >
-          <div className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors bg-white/5">
-            <span className="font-serif text-sm font-light">A</span>
+          <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-white/30 flex items-center justify-center group-hover:border-white transition-colors bg-white/5 shrink-0">
+            <span className="font-serif text-xs sm:text-sm font-light">A</span>
           </div>
           <div className="flex flex-col">
-            <span className="font-serif text-base sm:text-lg tracking-widest font-normal uppercase leading-none">
+            <span className="font-serif text-sm sm:text-lg tracking-widest font-normal uppercase leading-none truncate">
               Ansari Optical
             </span>
-            <span className="font-mono text-[9px] tracking-widest-xl text-zinc-400 uppercase mt-0.5">
+            <span className="font-mono text-[8px] sm:text-[9px] tracking-widest-xl text-zinc-400 uppercase mt-0.5">
               Haute Lunetterie
             </span>
           </div>
@@ -152,7 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-full bg-[#09090b]/95 backdrop-blur-2xl border-b border-white/10 p-6 flex flex-col gap-6 shadow-2xl animate-in slide-in-from-top duration-300">
+        <div className="lg:hidden fixed inset-x-0 top-full bg-[#09090b]/98 backdrop-blur-2xl border-b border-white/10 p-5 sm:p-6 flex flex-col gap-5 sm:gap-6 shadow-2xl animate-in slide-in-from-top duration-300 max-h-[calc(100dvh-64px)] overflow-y-auto">
           <nav className="flex flex-col gap-4 font-mono text-sm uppercase tracking-widest text-zinc-300">
             <button
               onClick={() => scrollToSection('scrollytelling-experience')}

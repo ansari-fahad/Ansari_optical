@@ -43,30 +43,30 @@ export const BespokeStudioModal: React.FC<BespokeStudioModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/85 backdrop-blur-xl animate-in fade-in duration-200">
-      <div className="relative w-full max-w-4xl bg-[#0e0e11] border border-white/10 shadow-2xl text-white my-8 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto bg-black/85 backdrop-blur-xl animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl bg-[#0e0e11] border border-white/10 shadow-2xl text-white my-2 sm:my-8 max-h-[96dvh] sm:max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="p-6 sm:p-8 border-b border-white/10 flex items-center justify-between">
+        <div className="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between shrink-0">
           <div>
-            <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-400">
+            <span className="font-mono text-[9px] sm:text-[10px] tracking-widest uppercase text-zinc-400">
               ATELIER CUSTOMIZER / FUKUI LAB
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl text-white mt-1">
+            <h2 className="font-serif text-xl sm:text-2xl md:text-3xl text-white mt-0.5 sm:mt-1">
               Bespoke Fitting: {product.name}
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="w-10 h-10 rounded-full border border-white/10 hover:border-white flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/10 hover:border-white flex items-center justify-center text-zinc-400 hover:text-white transition-colors shrink-0"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
 
         {/* Studio Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 max-h-[75vh] overflow-y-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 flex-1 overflow-y-auto">
           {/* Left Column: Visual Preview & Specs */}
-          <div className="lg:col-span-5 p-6 sm:p-8 bg-[#131317] border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-between">
+          <div className="lg:col-span-5 p-4 sm:p-6 bg-[#131317] border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-between">
             <div>
               <div className="relative aspect-square w-full bg-[#18181d] flex items-center justify-center overflow-hidden border border-white/5 mb-6">
                 <img
@@ -207,11 +207,11 @@ export const BespokeStudioModal: React.FC<BespokeStudioModalProps> = ({
 
               {/* Rx Input Fields if Single Vision or Progressive */}
               {(rxType === 'single-vision' || rxType === 'progressive') && (
-                <div className="p-4 bg-white/5 border border-white/10 space-y-3 font-mono text-xs">
+                <div className="p-3 sm:p-4 bg-white/5 border border-white/10 space-y-3 font-mono text-xs">
                   <p className="text-[11px] text-zinc-400 font-sans">
                     Enter your verified optometrist sphere values:
                   </p>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                     <div>
                       <span className="text-[10px] text-zinc-500 block mb-1">OD (RIGHT EYE)</span>
                       <input
@@ -274,34 +274,34 @@ export const BespokeStudioModal: React.FC<BespokeStudioModalProps> = ({
         </div>
 
         {/* Modal Footer with Price Summary and Add to Bag */}
-        <div className="p-6 sm:p-8 bg-[#09090b] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="p-4 sm:p-6 bg-[#09090b] border-t border-white/10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 shrink-0">
           <div>
-            <span className="font-mono text-[10px] uppercase text-zinc-500 block">
+            <span className="font-mono text-[9px] sm:text-[10px] uppercase text-zinc-500 block">
               TOTAL ESTIMATE (FRAME + OPHTHALMIC LENSES)
             </span>
             <div className="flex items-baseline gap-2">
-              <span className="font-serif text-3xl text-white font-normal">
+              <span className="font-serif text-2xl sm:text-3xl text-white font-normal">
                 ${totalPrice}
               </span>
               <span className="font-mono text-xs text-zinc-400">USD</span>
-              <span className="font-mono text-[11px] text-zinc-500 ml-2">
-                (Free Insured Express Delivery)
+              <span className="font-mono text-[10px] sm:text-[11px] text-zinc-500 ml-1 sm:ml-2">
+                (Free Express Delivery)
               </span>
             </div>
           </div>
 
-          <div className="flex items-center gap-3 w-full sm:w-auto">
+          <div className="flex items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={onClose}
-              className="w-1/2 sm:w-auto px-6 py-3.5 border border-white/15 hover:border-white text-zinc-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors"
+              className="flex-1 sm:flex-initial px-4 sm:px-6 py-3 sm:py-3.5 border border-white/15 hover:border-white text-zinc-400 hover:text-white font-mono text-xs uppercase tracking-widest transition-colors text-center"
             >
               Cancel
             </button>
             <button
               onClick={handleConfirm}
-              className="w-1/2 sm:w-auto px-8 py-3.5 bg-white text-black hover:bg-zinc-200 font-mono text-xs uppercase tracking-widest font-semibold transition-all hover:scale-105 active:scale-95 shadow-xl"
+              className="flex-1 sm:flex-initial px-5 sm:px-8 py-3 sm:py-3.5 bg-white text-black hover:bg-zinc-200 font-mono text-xs uppercase tracking-widest font-semibold transition-all hover:scale-105 active:scale-95 shadow-xl text-center"
             >
-              Add to Bespoke Bag
+              Add to Bag
             </button>
           </div>
         </div>

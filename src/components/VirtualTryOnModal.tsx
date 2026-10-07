@@ -78,17 +78,17 @@ export const VirtualTryOnModal: React.FC<VirtualTryOnModalProps> = ({
   }, []);
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
-      <div className="relative w-full max-w-5xl bg-[#0e0e11] border border-white/10 shadow-2xl text-white my-8 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
+      <div className="relative w-full max-w-5xl bg-[#0e0e11] border border-white/10 shadow-2xl text-white my-2 sm:my-8 max-h-[96dvh] sm:max-h-[90vh] flex flex-col overflow-hidden">
         {/* Top Bar */}
-        <div className="p-6 border-b border-white/10 flex items-center justify-between">
+        <div className="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 block">
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-zinc-400 block">
                 VIRTUAL OPTICAL MIRROR
               </span>
-              <h2 className="font-serif text-2xl text-white">
+              <h2 className="font-serif text-lg sm:text-2xl text-white">
                 Facial Geometry & Scale Simulation
               </h2>
             </div>
@@ -98,16 +98,16 @@ export const VirtualTryOnModal: React.FC<VirtualTryOnModalProps> = ({
               stopCamera();
               onClose();
             }}
-            className="w-10 h-10 rounded-full border border-white/10 hover:border-white flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-white/10 hover:border-white flex items-center justify-center text-zinc-400 hover:text-white transition-colors shrink-0"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
 
         {/* Studio Viewport */}
-        <div className="grid grid-cols-1 lg:grid-cols-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 flex-1 overflow-y-auto">
           {/* Main Visual Mirror Screen */}
-          <div className="lg:col-span-8 bg-[#070709] relative min-h-[420px] sm:min-h-[500px] flex items-center justify-center overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10">
+          <div className="lg:col-span-8 bg-[#070709] relative min-h-[340px] sm:min-h-[460px] flex items-center justify-center overflow-hidden border-b lg:border-b-0 lg:border-r border-white/10">
             {isCameraActive ? (
               <video
                 ref={videoRef}
@@ -128,7 +128,7 @@ export const VirtualTryOnModal: React.FC<VirtualTryOnModalProps> = ({
 
             {/* Overlaid Glasses Frame Geometry Simulation (SVG Silhouette or frame overlay) */}
             <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-              <div className="relative w-[340px] sm:w-[420px] transition-all duration-300 transform -translate-y-4">
+              <div className="relative w-[240px] xs:w-[280px] sm:w-[360px] md:w-[420px] transition-all duration-300 transform -translate-y-4">
                 <img
                   src={selectedProduct.image}
                   alt={selectedProduct.name}
@@ -138,11 +138,11 @@ export const VirtualTryOnModal: React.FC<VirtualTryOnModalProps> = ({
             </div>
 
             {/* Floating Camera / Model Switcher Controls */}
-            <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between gap-3 pointer-events-auto">
+            <div className="absolute bottom-3 sm:bottom-6 left-3 sm:left-6 right-3 sm:right-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 pointer-events-auto">
               {isCameraActive ? (
                 <button
                   onClick={stopCamera}
-                  className="flex items-center gap-2 bg-black/80 hover:bg-black text-white text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 backdrop-blur-md transition-colors"
+                  className="flex items-center justify-center gap-2 bg-black/85 hover:bg-black text-white text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-full border border-white/20 backdrop-blur-md transition-colors w-full sm:w-auto"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   <span>Switch to Editorial Muses</span>
@@ -150,7 +150,7 @@ export const VirtualTryOnModal: React.FC<VirtualTryOnModalProps> = ({
               ) : (
                 <button
                   onClick={startCamera}
-                  className="flex items-center gap-2 bg-white text-black hover:bg-zinc-200 text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-full font-medium transition-colors shadow-lg"
+                  className="flex items-center justify-center gap-2 bg-white text-black hover:bg-zinc-200 text-xs font-mono uppercase tracking-widest px-4 py-2 rounded-full font-medium transition-colors shadow-lg w-full sm:w-auto"
                 >
                   <Camera className="w-3.5 h-3.5" />
                   <span>Enable Live Webcam Mirror</span>
@@ -158,12 +158,12 @@ export const VirtualTryOnModal: React.FC<VirtualTryOnModalProps> = ({
               )}
 
               {!isCameraActive && (
-                <div className="flex items-center gap-1.5 bg-black/70 backdrop-blur-md p-1 rounded-full border border-white/10">
+                <div className="flex items-center justify-center gap-1.5 bg-black/75 backdrop-blur-md p-1 rounded-full border border-white/10 w-full sm:w-auto overflow-x-auto">
                   {modelPresets.map((m, idx) => (
                     <button
                       key={m.name}
                       onClick={() => setActiveModel(idx)}
-                      className={`px-3 py-1 rounded-full font-mono text-[10px] uppercase transition-all ${
+                      className={`flex-1 sm:flex-initial px-3 py-1 rounded-full font-mono text-[10px] uppercase transition-all whitespace-nowrap ${
                         activeModel === idx
                           ? 'bg-white text-black font-semibold'
                           : 'text-zinc-400 hover:text-white'

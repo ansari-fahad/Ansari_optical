@@ -93,15 +93,18 @@ export const ScrollSequence: React.FC<ScrollSequenceProps> = ({
     let offsetX = 0;
     let offsetY = 0;
 
-    // For spectacles, use subtle contain with slight cinematic zoom for presence
+    // For spectacles, use responsive contain geometry preserving full frame width on mobile
     if (screenRatio > imgRatio) {
       drawW = displayWidth;
       drawH = displayWidth / imgRatio;
       offsetY = (displayHeight - drawH) / 2;
+      offsetX = 0;
     } else {
-      drawH = displayHeight;
-      drawW = displayHeight * imgRatio;
+      // Portrait / phone viewports: scale to width with generous safety margins so temples never clip
+      drawW = displayWidth * 1.08;
+      drawH = drawW / imgRatio;
       offsetX = (displayWidth - drawW) / 2;
+      offsetY = (displayHeight - drawH) / 2;
     }
 
     // Clear and draw
@@ -302,29 +305,29 @@ export const ScrollSequence: React.FC<ScrollSequenceProps> = ({
 
         {/* SCENE 01: PURE ARCHITECTURE (0% - 24%) */}
         <div
-          className={`absolute inset-0 pointer-events-none flex flex-col justify-between p-6 sm:p-12 md:p-20 transition-all duration-700 ${
+          className={`absolute inset-0 pointer-events-none flex flex-col justify-between p-4 sm:p-10 md:p-16 lg:p-20 transition-all duration-700 ${
             currentChapter === 0
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 -translate-y-8 pointer-events-none'
           }`}
         >
-          <div className="max-w-xl mt-12 sm:mt-16">
-            <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md mb-4">
+          <div className="max-w-xl mt-10 sm:mt-16 pr-8 sm:pr-0">
+            <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md mb-3 sm:mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-300">
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-widest uppercase text-zinc-300">
                 Chapter 01 / Monolith Form
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
               Sculpted from <br />
               <span className="italic font-light text-zinc-300">Monolithic Acetate</span>
             </h2>
-            <p className="mt-4 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-md">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-md">
               Cured over ninety days in Fukui, Japan. Each frame is hand-beveled along continuous micro-arcs to capture light with architectural quietude.
             </p>
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-4 text-xs text-zinc-500 font-mono">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-t border-white/10 pt-3 sm:pt-4 text-[10px] sm:text-xs text-zinc-500 font-mono">
             <span>MODEL: G-100 MONOLITH</span>
             <span className="hidden sm:inline">8MM BLOCK DENSITY / ZERO WARPAGE</span>
             <span className="flex items-center gap-1">
@@ -335,29 +338,29 @@ export const ScrollSequence: React.FC<ScrollSequenceProps> = ({
 
         {/* SCENE 02: THE ANATOMY OF TENSION (25% - 49%) */}
         <div
-          className={`absolute inset-0 pointer-events-none flex flex-col justify-between p-6 sm:p-12 md:p-20 transition-all duration-700 ${
+          className={`absolute inset-0 pointer-events-none flex flex-col justify-between p-4 sm:p-10 md:p-16 lg:p-20 transition-all duration-700 ${
             currentChapter === 1
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-8 pointer-events-none'
           }`}
         >
-          <div className="max-w-xl self-end text-right mt-12 sm:mt-16">
-            <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md mb-4">
+          <div className="max-w-xl self-end text-right mt-10 sm:mt-16 pr-8 sm:pr-0">
+            <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md mb-3 sm:mb-4">
               <Compass className="w-3 h-3 text-white" />
-              <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-300">
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-widest uppercase text-zinc-300">
                 Chapter 02 / Suspension
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
               The Anatomy <br />
               <span className="italic font-light text-zinc-300">of Pure Tension</span>
             </h2>
-            <p className="mt-4 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-md ml-auto">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-md ml-auto">
               The temple core wires emerge. Milled beta-titanium wire preserves shape memory under constant flexion, eliminating pressure points across delicate temples.
             </p>
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-4 text-xs text-zinc-500 font-mono">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-t border-white/10 pt-3 sm:pt-4 text-[10px] sm:text-xs text-zinc-500 font-mono">
             <span>CORE: TITANIUM β-ALLOY</span>
             <span className="hidden sm:inline">DYNAMIC CALIPER FIT</span>
             <span>TEMPLE WEIGHT: 4.2 GRAMS</span>
@@ -366,35 +369,35 @@ export const ScrollSequence: React.FC<ScrollSequenceProps> = ({
 
         {/* SCENE 03: DECONSTRUCTED CRAFTSMANSHIP (50% - 74%) */}
         <div
-          className={`absolute inset-0 pointer-events-none flex flex-col justify-between p-6 sm:p-12 md:p-20 transition-all duration-700 ${
+          className={`absolute inset-0 pointer-events-none flex flex-col justify-between p-4 sm:p-10 md:p-16 lg:p-20 transition-all duration-700 ${
             currentChapter === 2
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 -translate-y-8 pointer-events-none'
           }`}
         >
-          <div className="max-w-xl mt-12 sm:mt-16">
-            <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md mb-4">
+          <div className="max-w-xl mt-10 sm:mt-16 pr-8 sm:pr-0">
+            <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md mb-3 sm:mb-4">
               <Layers className="w-3 h-3 text-white" />
-              <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-300">
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-widest uppercase text-zinc-300">
                 Chapter 03 / Mechanical Truth
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
               Zero Adhesives. <br />
               <span className="italic font-light text-zinc-300">Mechanical Harmony.</span>
             </h2>
-            <p className="mt-4 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-md">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-md">
               Every screw, anchor plate, and hinge barrel is individually turned from solid titanium stock. Engineered to be completely dismantled, serviced, and handed down.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 border-t border-white/10 pt-4 text-xs font-mono text-zinc-400">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 border-t border-white/10 pt-3 sm:pt-4 text-[10px] sm:text-xs font-mono text-zinc-400">
             <div>
-              <p className="text-[10px] text-zinc-500">HINGE SYSTEM</p>
+              <p className="text-[9px] sm:text-[10px] text-zinc-500">HINGE SYSTEM</p>
               <p className="text-white font-medium">5-Barrel Interlock</p>
             </div>
             <div>
-              <p className="text-[10px] text-zinc-500">RIVET HARDWARE</p>
+              <p className="text-[9px] sm:text-[10px] text-zinc-500">RIVET HARDWARE</p>
               <p className="text-white font-medium">Cold-Pressed Silver</p>
             </div>
             <div className="hidden sm:block">
@@ -410,42 +413,42 @@ export const ScrollSequence: React.FC<ScrollSequenceProps> = ({
 
         {/* SCENE 04: SCHEMATIC SPECIFICATION & CONVERSION (75% - 100%) */}
         <div
-          className={`absolute inset-0 pointer-events-none flex flex-col justify-between p-6 sm:p-12 md:p-20 transition-all duration-700 ${
+          className={`absolute inset-0 pointer-events-none flex flex-col justify-between p-4 sm:p-10 md:p-16 lg:p-20 transition-all duration-700 ${
             currentChapter === 3
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-8 pointer-events-none'
           }`}
         >
-          <div className="max-w-xl self-end text-right mt-12 sm:mt-16">
-            <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md mb-4">
+          <div className="max-w-xl self-end text-right mt-10 sm:mt-16 pr-8 sm:pr-0">
+            <div className="inline-flex items-center gap-2 border border-white/15 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md mb-3 sm:mb-4">
               <Cpu className="w-3 h-3 text-white" />
-              <span className="font-mono text-[10px] tracking-widest uppercase text-zinc-300">
+              <span className="font-mono text-[9px] sm:text-[10px] tracking-widest uppercase text-zinc-300">
                 Chapter 04 / Blueprint Verified
               </span>
             </div>
-            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-[1.08]">
+            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-normal tracking-tight text-white leading-[1.08]">
               Exploded Precision. <br />
               <span className="italic font-light text-zinc-300">Ready for Your Vision.</span>
             </h2>
-            <p className="mt-4 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-md ml-auto">
+            <p className="mt-3 sm:mt-4 text-xs sm:text-sm md:text-base text-zinc-400 font-light leading-relaxed max-w-md ml-auto">
               Model G-100 is engineered to host ultra-thin prescription optics with zero edge distortion. Select your custom frame tone and optical index.
             </p>
 
             {/* Direct Conversion CTA Button */}
-            <div className="mt-6 pointer-events-auto flex items-center justify-end gap-3">
+            <div className="mt-5 sm:mt-6 pointer-events-auto flex items-center justify-end">
               <button
                 onClick={onConfigureClick}
-                className="group relative inline-flex items-center gap-3 bg-white text-black px-6 py-3.5 rounded-full font-mono text-xs uppercase tracking-widest font-medium hover:bg-zinc-200 transition-all shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
+                className="group relative inline-flex items-center justify-center gap-3 bg-white text-black px-5 sm:px-6 py-3 sm:py-3.5 rounded-full font-mono text-[11px] sm:text-xs uppercase tracking-widest font-medium hover:bg-zinc-200 transition-all shadow-2xl hover:scale-[1.02] active:scale-[0.98]"
               >
                 <span>Configure Model G-100</span>
-                <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center text-[10px] group-hover:translate-x-0.5 transition-transform">
+                <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-black text-white flex items-center justify-center text-[10px] group-hover:translate-x-0.5 transition-transform">
                   →
                 </span>
               </button>
             </div>
           </div>
 
-          <div className="flex items-center justify-between border-t border-white/10 pt-4 text-xs text-zinc-400 font-mono">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-t border-white/10 pt-3 sm:pt-4 text-[10px] sm:text-xs text-zinc-400 font-mono">
             <span>CALIBRATION: 100% COMPLETE</span>
             <span className="hidden sm:inline">SCHEMATIC ID: G100-EXP-2026</span>
             <span className="text-white">BASE PRICE $385 USD</span>
@@ -457,8 +460,8 @@ export const ScrollSequence: React.FC<ScrollSequenceProps> = ({
         {/* ======================================================== */}
 
         {/* Right Lateral Timeline / Chapter Scrub Points */}
-        <div className="absolute right-4 sm:right-8 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-4">
-          <div className="flex flex-col gap-3">
+        <div className="absolute right-2 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-3 sm:gap-4">
+          <div className="flex flex-col gap-2.5 sm:gap-3">
             {[
               { label: '01', title: 'Form', ratio: 0.1 },
               { label: '02', title: 'Tension', ratio: 0.35 },
@@ -468,16 +471,16 @@ export const ScrollSequence: React.FC<ScrollSequenceProps> = ({
               <button
                 key={ch.label}
                 onClick={() => jumpToProgress(ch.ratio)}
-                className="group relative flex items-center justify-end gap-3 focus:outline-none"
+                className="group relative flex items-center justify-end gap-2 sm:gap-3 focus:outline-none p-1"
                 aria-label={`Jump to ${ch.title}`}
               >
                 <span className="hidden md:inline font-mono text-[10px] uppercase text-zinc-400 opacity-0 group-hover:opacity-100 transition-opacity pr-1">
                   {ch.title}
                 </span>
                 <span
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  className={`w-1.5 sm:w-2 h-1.5 sm:h-2 rounded-full transition-all duration-300 ${
                     currentChapter === idx
-                      ? 'w-2 h-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]'
+                      ? 'w-1.5 sm:w-2 h-5 sm:h-6 bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]'
                       : 'bg-zinc-600 group-hover:bg-zinc-400'
                   }`}
                 />
@@ -486,9 +489,9 @@ export const ScrollSequence: React.FC<ScrollSequenceProps> = ({
           </div>
 
           {/* Micro Frame Counter */}
-          <div className="mt-4 pt-4 border-t border-white/10 flex flex-col items-center">
-            <span className="font-mono text-[9px] text-zinc-500 tracking-wider">FRAME</span>
-            <span className="font-mono text-xs text-zinc-300 font-medium">
+          <div className="mt-2 sm:mt-4 pt-2 sm:pt-4 border-t border-white/10 flex flex-col items-center">
+            <span className="font-mono text-[8px] sm:text-[9px] text-zinc-500 tracking-wider">FRAME</span>
+            <span className="font-mono text-[10px] sm:text-xs text-zinc-300 font-medium">
               {String(currentFrameDisplay).padStart(3, '0')}
             </span>
           </div>

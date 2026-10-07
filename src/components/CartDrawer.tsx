@@ -49,13 +49,13 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md sm:max-w-lg bg-[#0e0e12] border-l border-white/10 shadow-2xl flex flex-col justify-between text-white">
+      <div className="absolute inset-y-0 right-0 max-w-full flex pl-0 sm:pl-10">
+        <div className="w-screen max-w-full sm:max-w-md md:max-w-lg bg-[#0e0e12] border-l border-white/10 shadow-2xl flex flex-col justify-between text-white">
           {/* Header */}
-          <div className="p-6 border-b border-white/10 flex items-center justify-between">
+          <div className="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
               <ShoppingBag className="w-4 h-4 text-zinc-400" />
-              <h2 className="font-serif text-xl tracking-wide uppercase">
+              <h2 className="font-serif text-lg sm:text-xl tracking-wide uppercase">
                 Bespoke Bag ({items.reduce((s, i) => s + i.quantity, 0)})
               </h2>
             </div>
@@ -177,7 +177,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
 
           {/* Footer & Checkout Area */}
           {items.length > 0 && (
-            <div className="p-6 border-t border-white/10 bg-[#0a0a0c] space-y-4">
+            <div className="p-4 sm:p-6 border-t border-white/10 bg-[#0a0a0c] space-y-3.5 sm:space-y-4 shrink-0">
               {/* Promo code form */}
               <form onSubmit={applyPromo} className="flex gap-2">
                 <input
@@ -185,11 +185,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   value={promoCode}
                   onChange={(e) => setPromoCode(e.target.value)}
                   placeholder="PROMO CODE (TRY: MUSE10)"
-                  className="flex-1 bg-white/5 border border-white/15 px-3 py-2 text-xs font-mono uppercase text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                  className="flex-1 bg-white/5 border border-white/15 px-3 py-2 text-xs font-mono uppercase text-white placeholder:text-zinc-600 focus:outline-none focus:border-white min-w-0"
                 />
                 <button
                   type="submit"
-                  className="bg-white/10 hover:bg-white text-zinc-200 hover:text-black px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors"
+                  className="bg-white/10 hover:bg-white text-zinc-200 hover:text-black px-3.5 sm:px-4 py-2 text-xs font-mono uppercase tracking-wider transition-colors shrink-0"
                 >
                   Apply
                 </button>
@@ -214,10 +214,10 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
                   </div>
                 )}
                 <div className="flex justify-between text-zinc-400">
-                  <span>Insured DHL Express Shipping</span>
+                  <span>Insured Express Shipping</span>
                   <span className="text-white">COMPLIMENTARY</span>
                 </div>
-                <div className="flex justify-between text-base text-white font-medium border-t border-white/10 pt-2 font-serif">
+                <div className="flex justify-between text-sm sm:text-base text-white font-medium border-t border-white/10 pt-2 font-serif">
                   <span>Final Total</span>
                   <span>${finalTotal} USD</span>
                 </div>
@@ -226,15 +226,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               {/* Checkout Trigger */}
               <button
                 onClick={() => onOpenCheckout(discountAmount)}
-                className="w-full flex items-center justify-center gap-2 bg-white text-black py-4 font-mono text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl"
+                className="w-full flex items-center justify-center gap-2 bg-white text-black py-3.5 sm:py-4 font-mono text-xs uppercase tracking-widest font-semibold hover:bg-zinc-200 transition-all hover:scale-[1.02] active:scale-[0.98] shadow-2xl"
               >
-                <span>Proceed to Secure Checkout</span>
+                <span>Proceed to Checkout</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
 
-              <div className="flex items-center justify-center gap-2 text-[10px] font-mono text-zinc-500 pt-1">
-                <ShieldCheck className="w-3.5 h-3.5 text-zinc-400" />
-                <span>256-BIT ENCRYPTED · FREE ATELIER RESIZING · 30-DAY RETURNS</span>
+              <div className="flex items-center justify-center gap-1.5 text-[8px] sm:text-[9px] font-mono text-zinc-500 pt-1 text-center">
+                <ShieldCheck className="w-3.5 h-3.5 text-zinc-400 shrink-0" />
+                <span>256-BIT ENCRYPTED · FREE RESIZING · 30-DAY TRIAL</span>
               </div>
             </div>
           )}

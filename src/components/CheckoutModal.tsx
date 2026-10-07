@@ -54,36 +54,36 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl bg-[#0e0e12] border border-white/10 shadow-2xl text-white my-8 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto bg-black/90 backdrop-blur-2xl animate-in fade-in duration-200">
+      <div className="relative w-full max-w-3xl bg-[#0e0e12] border border-white/10 shadow-2xl text-white my-2 sm:my-8 max-h-[96dvh] sm:max-h-[90vh] flex flex-col overflow-hidden">
         {/* Header */}
-        <div className="p-6 border-b border-white/10 flex items-center justify-between">
-          <div className="flex items-center gap-3">
+        <div className="p-4 sm:p-6 border-b border-white/10 flex items-center justify-between shrink-0">
+          <div className="flex items-center gap-2.5 sm:gap-3">
             <Lock className="w-4 h-4 text-emerald-400" />
-            <h2 className="font-serif text-xl sm:text-2xl text-white">
+            <h2 className="font-serif text-lg sm:text-2xl text-white">
               {step === 'form' ? 'Atelier Secure Checkout' : 'Order Confirmed'}
             </h2>
           </div>
           <button
             onClick={onClose}
-            className="w-8 h-8 rounded-full border border-white/10 hover:border-white flex items-center justify-center text-zinc-400 hover:text-white transition-colors"
+            className="w-8 h-8 rounded-full border border-white/10 hover:border-white flex items-center justify-center text-zinc-400 hover:text-white transition-colors shrink-0"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {step === 'form' ? (
-          <form onSubmit={handlePlaceOrder} className="p-6 sm:p-8 space-y-6">
+          <form onSubmit={handlePlaceOrder} className="p-4 sm:p-8 space-y-5 sm:space-y-6 flex-1 overflow-y-auto">
             {/* Express 1-Click Payment Row */}
             <div>
-              <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 block mb-2">
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-zinc-400 block mb-2">
                 EXPRESS ATELIER PAYMENT
               </span>
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('apple-pay')}
-                  className={`py-3 px-4 border text-center font-mono text-xs uppercase tracking-wider transition-all ${
+                  className={`py-2.5 sm:py-3 px-3 sm:px-4 border text-center font-mono text-xs uppercase tracking-wider transition-all ${
                     paymentMethod === 'apple-pay'
                       ? 'border-white bg-white text-black font-semibold'
                       : 'border-white/10 hover:border-white/30 bg-white/5 text-zinc-300'
@@ -94,7 +94,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('card')}
-                  className={`py-3 px-4 border text-center font-mono text-xs uppercase tracking-wider transition-all ${
+                  className={`py-2.5 sm:py-3 px-3 sm:px-4 border text-center font-mono text-xs uppercase tracking-wider transition-all ${
                     paymentMethod === 'card'
                       ? 'border-white bg-white text-black font-semibold'
                       : 'border-white/10 hover:border-white/30 bg-white/5 text-zinc-300'
@@ -105,7 +105,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('klarna')}
-                  className={`py-3 px-4 border text-center font-mono text-xs uppercase tracking-wider transition-all ${
+                  className={`py-2.5 sm:py-3 px-3 sm:px-4 border text-center font-mono text-xs uppercase tracking-wider transition-all ${
                     paymentMethod === 'klarna'
                       ? 'border-white bg-white text-black font-semibold'
                       : 'border-white/10 hover:border-white/30 bg-white/5 text-zinc-300'
@@ -117,18 +117,18 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             </div>
 
             {/* Delivery Details */}
-            <div className="space-y-4">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-zinc-400 block">
+            <div className="space-y-3.5 sm:space-y-4">
+              <span className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-zinc-400 block">
                 DELIVERY RECIPIENT
               </span>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 sm:gap-3">
                 <input
                   type="text"
                   required
                   placeholder="Full Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="bg-white/5 border border-white/15 p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                  className="bg-white/5 border border-white/15 p-2.5 sm:p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
                 />
                 <input
                   type="email"
@@ -136,7 +136,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   placeholder="Email for Optical Certificate"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="bg-white/5 border border-white/15 p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                  className="bg-white/5 border border-white/15 p-2.5 sm:p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
                 />
               </div>
 
@@ -146,17 +146,17 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 placeholder="Street Address"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
-                className="w-full bg-white/5 border border-white/15 p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                className="w-full bg-white/5 border border-white/15 p-2.5 sm:p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
               />
 
-              <div className="grid grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 <input
                   type="text"
                   required
                   placeholder="City"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="bg-white/5 border border-white/15 p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                  className="bg-white/5 border border-white/15 p-2.5 sm:p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
                 />
                 <input
                   type="text"
@@ -164,7 +164,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   placeholder="Postal Code"
                   value={postal}
                   onChange={(e) => setPostal(e.target.value)}
-                  className="bg-white/5 border border-white/15 p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                  className="bg-white/5 border border-white/15 p-2.5 sm:p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
                 />
                 <input
                   type="text"
@@ -172,7 +172,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   placeholder="Country"
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
-                  className="bg-white/5 border border-white/15 p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
+                  className="bg-white/5 border border-white/15 p-2.5 sm:p-3 text-xs font-mono text-white placeholder:text-zinc-600 focus:outline-none focus:border-white"
                 />
               </div>
             </div>

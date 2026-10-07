@@ -32,35 +32,35 @@ export const LensCraftSection: React.FC = () => {
   ];
 
   return (
-    <section id="lens-optics-lab" className="relative w-full py-28 px-6 sm:px-12 md:px-20 bg-[#09090b] text-white border-t border-white/5">
+    <section id="lens-optics-lab" className="relative w-full py-20 sm:py-28 px-4 sm:px-8 md:px-16 lg:px-20 bg-[#09090b] text-white border-t border-white/5">
       {/* Background grain */}
       <div className="absolute inset-0 pointer-events-none bg-grain opacity-25" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 border-b border-white/10 pb-8 mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 border-b border-white/10 pb-6 sm:pb-8 mb-12 sm:mb-16">
           <div>
-            <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-zinc-400 mb-3">
+            <div className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-zinc-400 mb-2.5 sm:mb-3">
               <span>03 / OPHTHALMIC LABORATORY</span>
               <span className="w-8 h-px bg-zinc-700" />
               <span>FUKUI PRECISION</span>
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white">
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white">
               The Architecture of <br />
               <span className="italic font-light text-zinc-300">Pure Clarity</span>
             </h2>
           </div>
 
-          <p className="max-w-md text-sm text-zinc-400 font-light leading-relaxed">
+          <p className="max-w-md text-xs sm:text-sm text-zinc-400 font-light leading-relaxed">
             The world is meant to be experienced without glare, haze, or distortion. Each Ansari lens is custom diamond-edged to match your individual pupillary distance.
           </p>
         </div>
 
         {/* Interactive Lens Strata Visualizer Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Macro Lens Visual */}
           <div className="lg:col-span-6 relative">
-            <div className="relative aspect-[4/5] w-full bg-[#121215] overflow-hidden border border-white/10 shadow-2xl">
+            <div className="relative aspect-[4/3] sm:aspect-[4/5] w-full bg-[#121215] overflow-hidden border border-white/10 shadow-2xl">
               <img
                 src="/images/lens_craft.jpg"
                 alt="Ansari 1.74 High Index Lens on Basalt"
@@ -70,22 +70,22 @@ export const LensCraftSection: React.FC = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
               {/* Bottom Label */}
-              <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between font-mono text-xs">
+              <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6 flex items-center justify-between font-mono text-xs">
                 <div>
-                  <span className="text-[10px] text-zinc-400 uppercase block">SPECIFICATION</span>
-                  <span className="text-white font-medium">VISIO 1.74 AS-DIAMOND</span>
+                  <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase block">SPECIFICATION</span>
+                  <span className="text-white font-medium text-[11px] sm:text-xs">VISIO 1.74 AS-DIAMOND</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-[10px] text-zinc-400 uppercase block">EDGE FINISH</span>
-                  <span className="text-white font-medium">FACETED CRYSTAL BEVEL</span>
+                  <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase block">EDGE FINISH</span>
+                  <span className="text-white font-medium text-[11px] sm:text-xs">FACETED CRYSTAL BEVEL</span>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Right Column: Layer Interactive Tabs */}
-          <div className="lg:col-span-6 space-y-4">
-            <p className="font-mono text-xs uppercase tracking-widest text-zinc-400 mb-6 flex items-center gap-2">
+          <div className="lg:col-span-6 space-y-3 sm:space-y-4">
+            <p className="font-mono text-[11px] sm:text-xs uppercase tracking-widest text-zinc-400 mb-4 sm:mb-6 flex items-center gap-2">
               <Layers className="w-4 h-4 text-white" />
               <span>EXPLORE THE 4-STRATA COATING MATRIX</span>
             </p>
@@ -94,34 +94,34 @@ export const LensCraftSection: React.FC = () => {
               <div
                 key={layer.title}
                 onClick={() => setActiveLayer(idx)}
-                className={`p-6 border transition-all duration-300 cursor-pointer ${
+                className={`p-4 sm:p-6 border transition-all duration-300 cursor-pointer ${
                   activeLayer === idx
                     ? 'border-white bg-[#15151a] shadow-xl'
                     : 'border-white/5 hover:border-white/20 bg-white/5 opacity-70 hover:opacity-100'
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-serif text-lg text-white">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-2">
+                  <span className="font-serif text-base sm:text-lg text-white">
                     {layer.title}
                   </span>
-                  <span className="font-mono text-[10px] uppercase text-zinc-400 bg-white/5 px-2 py-0.5 border border-white/10">
+                  <span className="font-mono text-[9px] sm:text-[10px] uppercase text-zinc-400 bg-white/5 px-2 py-0.5 border border-white/10 shrink-0 self-start sm:self-auto">
                     {layer.metric}
                   </span>
                 </div>
 
-                <p className="font-mono text-[11px] text-zinc-400 mt-1 uppercase">
+                <p className="font-mono text-[10px] sm:text-[11px] text-zinc-400 mt-1 uppercase">
                   {layer.subtitle}
                 </p>
 
                 {activeLayer === idx && (
-                  <p className="mt-4 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed animate-in fade-in duration-300">
+                  <p className="mt-3 sm:mt-4 text-xs sm:text-sm text-zinc-300 font-light leading-relaxed animate-in fade-in duration-300">
                     {layer.description}
                   </p>
                 )}
               </div>
             ))}
 
-            <div className="pt-6 flex items-center justify-between text-xs font-mono text-zinc-500 border-t border-white/10">
+            <div className="pt-4 sm:pt-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-[10px] sm:text-xs font-mono text-zinc-500 border-t border-white/10">
               <span className="flex items-center gap-1.5 text-zinc-300">
                 <Award className="w-4 h-4 text-white" /> ISO 8980-3 OPHTHALMIC CERTIFIED
               </span>
