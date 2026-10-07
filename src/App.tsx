@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { ScrollSequence } from './components/ScrollSequence';
@@ -210,6 +211,7 @@ export function App() {
         />
       )}
 
+      <SpeedInsights />
       {/* Slide-out Cart Bag Drawer */}
       <CartDrawer
         isOpen={isCartOpen}
