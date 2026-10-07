@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -171,7 +172,7 @@ export function App() {
           setIsTryOnOpen(true);
         }}
       />
-
+      <Analytics />
       {/* Ophthalmic Lens Technology & Coatings Lab */}
       <LensCraftSection />
 
